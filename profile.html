@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pengguna - LINTAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button onclick="history.back()" class="text-gray-600 hover:text-gray-800">
+                        ← Kembali
+                    </button>
+                    <h1 class="text-2xl font-bold text-blue-600">LINTAS</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Profile Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-6">
+                    <div class="text-center mb-6">
+                        <img src="andi.jpg" alt="Andi Pratama" class="w-24 h-24 object-cover rounded-full mx-auto mb-4">
+                        <h2 class="text-xl font-semibold">Andi Pratama</h2>
+                        <p class="text-gray-600">Mahasiswa Biologi</p>
+                        <p class="text-sm text-gray-500">Universitas Indonesia</p>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Rating</span>
+                            <div class="flex items-center space-x-1">
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                                <span class="text-sm text-gray-600">(4.8)</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Transaksi</span>
+                            <span class="text-sm font-semibold">47</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">Bergabung</span>
+                            <span class="text-sm text-gray-600">Mar 2023</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <p class="text-sm text-gray-600">📧 andi.pratama@ui.ac.id</p>
+                        <p class="text-sm text-gray-600">📱 +62 812-3456-7890</p>
+                        <p class="text-sm text-gray-600">📍 Jakarta Selatan</p>
+                    </div>
+                    <button class="bg-blue-600 text-white px-4 py-2 mb-2 mt-5 w-full rounded-lg hover:bg-blue-700">
+                        Edit Profil
+                    </button>
+                    <br>
+                    <button class="bg-red-600 text-white px-4 py-2  w-full rounded-lg hover:bg-red-700">
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <!-- Navigation Tabs -->
+                <div class="bg-white rounded-lg shadow-sm mb-6">
+                    <nav class="flex space-x-8 px-6">
+                        <button onclick="showTab('products')" class="py-4 text-blue-600 border-b-2 border-blue-600 font-medium">
+                            Produk Saya (8)
+                        </button>
+                        <button onclick="showTab('history')" class="py-4 text-gray-500 hover:text-gray-700">
+                            Riwayat Transaksi
+                        </button>
+                        <button onclick="showTab('reviews')" class="py-4 text-gray-500 hover:text-gray-700">
+                            Ulasan (23)
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Products Tab -->
+                <div id="products" class="space-y-4">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold">Produk yang Dijual/Disewa</h3>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                + Tambah Produk
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Product Item 1 -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex space-x-4">
+                                    <img src="olympus.webp" alt="Mikroskop" class="size-20 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium mb-1">Mikroskop Olympus CX23</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Rp 2.500.000 • Dijual</p>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Aktif</span>
+                                            <span class="text-xs text-gray-500">127 dilihat</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="text-blue-600 text-sm hover:underline">Edit</button>
+                                        <button class="text-red-600 text-sm hover:underline">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Item 2 -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex space-x-4">
+                                    <img src="HI9813-6.webp" alt="pH Meter" class="size-20 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium mb-1">pH Meter Digital Hanna</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Rp 1.200.000 • Dijual</p>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Terjual</span>
+                                            <span class="text-xs text-gray-500">89 dilihat</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="text-blue-600 text-sm hover:underline">Edit</button>
+                                        <button class="text-red-600 text-sm hover:underline">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Item 3 -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex space-x-4">
+                                    <img src="ependorf.webp" alt="Pipet" class="size-20 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium mb-1">Set Pipet Mikro Eppendorf</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Rp 50.000/hari • Disewa</p>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Dipinjam</span>
+                                            <span class="text-xs text-gray-500">156 dilihat</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="text-blue-600 text-sm hover:underline">Edit</button>
+                                        <button class="text-red-600 text-sm hover:underline">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Item 4 -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex space-x-4">
+                                    <img src="14e3fcef-0db7-4041-b116-17dc4329736c.webp" alt="Centrifuge" class="size-20 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium mb-1">Centrifuge Mini Hettich</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Rp 75.000/hari • Disewa</p>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Aktif</span>
+                                            <span class="text-xs text-gray-500">43 dilihat</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="text-blue-600 text-sm hover:underline">Edit</button>
+                                        <button class="text-red-600 text-sm hover:underline">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Tab -->
+                <div id="history" class="space-y-4 hidden">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Riwayat Transaksi</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Transaction Item 1 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="Multimeter Digital Fluke.webp" alt="Multimeter" class="w-12 h-12 object-cover rounded">
+                                        <div>
+                                            <h4 class="font-medium">Multimeter Digital Fluke</h4>
+                                            <p class="text-sm text-gray-600">Dibeli dari Budi_elektro</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">Rp 850.000</p>
+                                        <p class="text-sm text-green-600">Selesai</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <span>15 Nov 2024</span>
+                                    <button class="text-blue-600 hover:underline">Beri Ulasan</button>
+                                </div>
+                            </div>
+
+                            <!-- Transaction Item 2 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="633c4a0b813f5108fc6cb405-lab-bunsen-burner-with-air-gas.jpg" alt="Bunsen" class="w-12 h-12 object-cover rounded">
+                                        <div>
+                                            <h4 class="font-medium">Bunsen Burner + Tabung Gas</h4>
+                                            <p class="text-sm text-gray-600">Dijual ke Maya_lab</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">Rp 350.000</p>
+                                        <p class="text-sm text-green-600">Selesai</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <span>8 Nov 2024</span>
+                                    <button class="text-blue-600 hover:underline">Lihat Detail</button>
+                                </div>
+                            </div>
+
+                            <!-- Transaction Item 3 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="Sartorius-BSA-Series-2.png" alt="Neraca" class="w-12 h-12 object-cover rounded">
+                                        <div>
+                                            <h4 class="font-medium">Neraca Analitik Sartorius</h4>
+                                            <p class="text-sm text-gray-600">Disewa ke Sari_chem</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">Rp 300.000</p>
+                                        <p class="text-sm text-yellow-600">Berlangsung</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <span>1 Nov 2024 - 4 Nov 2024</span>
+                                    <button class="text-blue-600 hover:underline">Chat Penyewa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="reviews" class="space-y-4 hidden">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Ulasan yang Diterima</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Review Item 1 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <img src="https://via.placeholder.com/40x40?text=S" alt="Sari" class="w-8 h-8 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2">
+                                            <h4 class="font-medium text-sm">Sari Dewi</h4>
+                                            <span class="text-yellow-500 text-sm">⭐⭐⭐⭐⭐</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">2 minggu lalu • Mikroskop Olympus CX23</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    Mikroskop masih bagus banget! Sesuai deskripsi, semua lensa jernih dan lampu LED terang. 
+                                    Packing juga aman. Seller responsif dan ramah. Recommended!
+                                </p>
+                            </div>
+
+                            <!-- Review Item 2 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <img src="https://via.placeholder.com/40x40?text=M" alt="Maya" class="w-8 h-8 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2">
+                                            <h4 class="font-medium text-sm">Maya Sari</h4>
+                                            <span class="text-yellow-500 text-sm">⭐⭐⭐⭐⭐</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">3 minggu lalu • Bunsen Burner + Tabung Gas</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    Bunsen burner berfungsi dengan baik, tabung gas masih penuh. 
+                                    Transaksi lancar dan barang sesuai foto. Terima kasih!
+                                </p>
+                            </div>
+
+                            <!-- Review Item 3 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <img src="https://via.placeholder.com/40x40?text=R" alt="Rian" class="w-8 h-8 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2">
+                                            <h4 class="font-medium text-sm">Rian Pratama</h4>
+                                            <span class="text-yellow-500 text-sm">⭐⭐⭐⭐</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">1 bulan lalu • Set Pipet Mikro Eppendorf</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    Pipet masih akurat dan berfungsi normal. Sewa 3 hari untuk praktikum PCR. 
+                                    Harga reasonable dan pemilik fleksibel dengan jadwal pengambilan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Ulasan yang Diberikan</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Given Review 1 -->
+                            <div class="border-b pb-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <img src="https://via.placeholder.com/40x40?text=B" alt="Budi" class="w-8 h-8 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2">
+                                            <h4 class="font-medium text-sm">Budi Santoso</h4>
+                                            <span class="text-yellow-500 text-sm">⭐⭐⭐⭐⭐</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">1 minggu lalu • Multimeter Digital Fluke</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    Multimeter sesuai deskripsi, akurasi tinggi dan display jelas. 
+                                    Seller jujur dan komunikatif. Pengiriman cepat dan packing rapi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            document.getElementById('products').classList.add('hidden');
+            document.getElementById('history').classList.add('hidden');
+            document.getElementById('reviews').classList.add('hidden');
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Update button styles
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                btn.classList.add('text-gray-500');
+            });
+            
+            event.target.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+            event.target.classList.remove('text-gray-500');
+        }
+    </script>
+</body>
+</html>

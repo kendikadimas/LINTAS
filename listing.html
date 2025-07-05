@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Alat Praktikum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">LINTAS</a>
+                <!-- <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Pasang Iklan
+                </button> -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Search & Filter -->
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" placeholder="Cari alat praktikum..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>Semua Kategori</option>
+                    <option>Kimia</option>
+                    <option>Fisika</option>
+                    <option>Biologi</option>
+                    <option>Elektro</option>
+                </select>
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>Semua Lokasi</option>
+                    <option>Jakarta</option>
+                    <option>Bandung</option>
+                    <option>Surabaya</option>
+                </select>
+                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>Semua Status</option>
+                    <option>Dijual</option>
+                    <option>Disewa</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="flex items-center justify-between mb-6">
+            <p class="text-gray-600">Menampilkan 24 dari 156 produk</p>
+            <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>Terbaru</option>
+                <option>Harga Terendah</option>
+                <option>Harga Tertinggi</option>
+                <option>Terdekat</option>
+            </select>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product Card 1 -->
+            <a href="detail.html">
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="olympus.webp" alt="Mikroskop" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Mikroskop Olympus CX23</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Sangat Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-blue-600">Rp 2.500.000</span>
+                        <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Dijual</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Jakarta Selatan</span>
+                        <span>👤 Andi_lab</span>
+                    </div>
+                </div>
+            </div>
+            </a>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="ependorf.webp" alt="Pipet Mikro" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Set Pipet Mikro Eppendorf</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-green-600">Rp 50.000/hari</span>
+                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Disewa</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Bandung</span>
+                        <span>👤 Sari_chem</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="Multimeter Digital Fluke.webp" alt="Multimeter" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm">Dipinjam</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Multimeter Digital Fluke</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Sangat Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-green-600">Rp 25.000/hari</span>
+                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Disewa</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Surabaya</span>
+                        <span>👤 Budi_elektro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="633c4a0b813f5108fc6cb405-lab-bunsen-burner-with-air-gas.jpg" alt="Bunsen Burner" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Bunsen Burner + Tabung Gas</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-blue-600">Rp 350.000</span>
+                        <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Dijual</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Jakarta Pusat</span>
+                        <span>👤 Maya_lab</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="Sartorius-BSA-Series-2.png" alt="Neraca Analitik" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Neraca Analitik Sartorius</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Sangat Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-green-600">Rp 100.000/hari</span>
+                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Disewa</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Yogyakarta</span>
+                        <span>👤 Dika_chem</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="TEKTRONIX-TDS2012C-Digital-Storage-Oscilloscope-copy.jpg" alt="Oscilloscope" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Oscilloscope Digital Tektronix</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-blue-600">Rp 8.500.000</span>
+                        <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Dijual</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Jakarta Barat</span>
+                        <span>👤 Rian_elektro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="14e3fcef-0db7-4041-b116-17dc4329736c.webp" alt="Centrifuge" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">Centrifuge Mini Hettich</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-green-600">Rp 75.000/hari</span>
+                        <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Disewa</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Malang</span>
+                        <span>👤 Fitri_bio</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 8 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative">
+                    <img src="HI9813-6.webp" alt="pH Meter" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-sm">Tersedia</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2">pH Meter Digital Hanna</h3>
+                    <p class="text-sm text-gray-600 mb-2">Kondisi: Sangat Baik</p>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-bold text-blue-600">Rp 1.200.000</span>
+                        <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Dijual</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📍 Semarang</span>
+                        <span>👤 Agus_lab</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8">
+            <div class="flex space-x-2">
+                <button class="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">←</button>
+                <button class="px-3 py-2 bg-blue-600 text-white rounded-lg">1</button>
+                <button class="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
+                <button class="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
+                <button class="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">→</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

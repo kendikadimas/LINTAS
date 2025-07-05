@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - LINTAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button onclick="history.back()" class="text-gray-600 hover:text-gray-800">
+                        ← Kembali
+                    </button>
+                    <h1 class="text-2xl font-bold text-blue-600">LINTAS</h1>
+                </div>
+                <div class="text-sm text-gray-600">
+                    Langkah 2 dari 3
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Form -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Delivery Method -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold mb-4">Metode Pengiriman</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="delivery" value="pickup" class="text-blue-600" checked>
+                            <div class="flex-1">
+                                <h3 class="font-medium">Ambil Sendiri</h3>
+                                <p class="text-sm text-gray-600">Gratis - Ambil di lokasi penjual</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="delivery" value="delivery" class="text-blue-600">
+                            <div class="flex-1">
+                                <h3 class="font-medium">Dikirim (GoSend/Grab)</h3>
+                                <p class="text-sm text-gray-600">Rp 15.000 - Estimasi 1-2 jam</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold mb-4">Alamat Pengiriman</h2>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="tel" placeholder="Nomor HP" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <textarea placeholder="Alamat Lengkap" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Kota" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="text" placeholder="Kode Pos" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <textarea placeholder="Catatan untuk penjual (opsional)" rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold mb-4">Metode Pembayaran</h2>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment" value="transfer" class="text-blue-600" checked>
+                            <div class="flex-1">
+                                <h3 class="font-medium">Transfer Bank</h3>
+                                <p class="text-sm text-gray-600">BCA, BNI, BRI, Mandiri</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment" value="ewallet" class="text-blue-600">
+                            <div class="flex-1">
+                                <h3 class="font-medium">E-Wallet</h3>
+                                <p class="text-sm text-gray-600">GoPay, OVO, DANA, ShopeePay</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment" value="cod" class="text-blue-600">
+                            <div class="flex-1">
+                                <h3 class="font-medium">Bayar di Tempat (COD)</h3>
+                                <p class="text-sm text-gray-600">Khusus untuk ambil sendiri</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-6">
+                    <h2 class="text-xl font-semibold mb-4">Ringkasan Pesanan</h2>
+                    
+                    <!-- Product Item -->
+                    <div class="flex items-center space-x-4 mb-4 pb-4 border-b">
+                        <img src="olympus.webp" alt="Mikroskop" class="w-16 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h3 class="font-medium text-sm">Mikroskop Olympus CX23</h3>
+                            <p class="text-sm text-gray-600">Kondisi: Sangat Baik</p>
+                            <p class="text-sm text-gray-600">Qty: 1</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold">Rp 2.500.000</p>
+                        </div>
+                    </div>
+
+                    <!-- Seller Info -->
+                    <div class="flex items-center space-x-3 mb-4 pb-4 border-b">
+                        <img src="andi.jpg" alt="Andi" class="w-8 h-8 object-cover rounded-full">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-sm">Andi Pratama</h4>
+                            <p class="text-xs text-gray-600">Jakarta Selatan</p>
+                        </div>
+                        <button class="text-blue-600 text-sm">Chat</button>
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span>Subtotal</span>
+                            <span>Rp 2.500.000</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Ongkir</span>
+                            <span id="shipping-cost">Gratis</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Biaya Layanan</span>
+                            <span>Rp 5.000</span>
+                        </div>
+                        <hr class="my-2">
+                        <div class="flex justify-between font-semibold text-lg">
+                            <span>Total</span>
+                            <span id="total-price">Rp 2.505.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <button onclick="showConfirmation()" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Bayar Sekarang
+                    </button>
+
+                    <!-- Security Info -->
+                    <div class="mt-4 text-center">
+                        <p class="text-xs text-gray-500">
+                            🔒 Transaksi aman dengan sistem escrow
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full">
+            <h3 class="text-xl font-semibold mb-4">Konfirmasi Pesanan</h3>
+            <p class="text-gray-600 mb-6">
+                Pastikan semua informasi sudah benar sebelum melanjutkan pembayaran.
+            </p>
+            <div class="flex space-x-4">
+                <button onclick="hideConfirmation()" class="flex-1 border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50">
+                    Periksa Lagi
+                </button>
+                <button onclick="processPayment()" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                    Lanjutkan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full text-center">
+            <div class="text-green-500 text-6xl mb-4">✅</div>
+            <h3 class="text-xl font-semibold mb-2">Pesanan Berhasil!</h3>
+            <p class="text-gray-600 mb-6">
+                Pesanan Anda telah diterima. Silakan lakukan pembayaran dalam 24 jam.
+            </p>
+            <button onclick="window.location.href='#'" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700">
+                Lihat Status Pesanan
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Update shipping cost based on delivery method
+        document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const shippingCost = document.getElementById('shipping-cost');
+                const totalPrice = document.getElementById('total-price');
+                
+                if (this.value === 'delivery') {
+                    shippingCost.textContent = 'Rp 15.000';
+                    totalPrice.textContent = 'Rp 2.520.000';
+                } else {
+                    shippingCost.textContent = 'Gratis';
+                    totalPrice.textContent = 'Rp 2.505.000';
+                }
+            });
+        });
+
+        function showConfirmation() {
+            document.getElementById('confirmModal').classList.remove('hidden');
+            document.getElementById('confirmModal').classList.add('flex');
+        }
+
+        function hideConfirmation() {
+            document.getElementById('confirmModal').classList.add('hidden');
+            document.getElementById('confirmModal').classList.remove('flex');
+        }
+
+        function processPayment() {
+            hideConfirmation();
+            // Simulate processing delay
+            setTimeout(() => {
+                document.getElementById('successModal').classList.remove('hidden');
+                document.getElementById('successModal').classList.add('flex');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

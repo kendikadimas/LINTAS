@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINTAS - Platform Jual Beli & Sewa Alat Kuliah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+        }
+        
+        .step-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-graduation-cap text-2xl text-purple-600 mr-2"></i>
+                    <span class="text-xl font-bold text-gray-800">LINTAS</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition">Beranda</a>
+                    <a href="listing.html" class="text-gray-700 hover:text-purple-600 transition">Shop</a>
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 transition">Fitur</a>
+                    <a href="#categories" class="text-gray-700 hover:text-purple-600 transition">Kategori</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-purple-600 transition">Testimoni</a>
+                    <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                        Masuk
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        Jual Beli & Sewa<br>
+                        <span class="text-yellow-300">Alat Kuliah</span><br>
+                        Mudah & Aman
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-200">
+                        Platform khusus mahasiswa untuk berbagi alat praktikum, buku, dan perlengkapan kuliah. 
+                        Hemat biaya, bantu sesama mahasiswa!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-yellow-400 text-purple-800 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-300 transition pulse-btn">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Daftar Sekarang
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                            <i class="fas fa-search mr-2"></i>
+                            Jelajahi Barang
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="floating-animation">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Alat Kuliah" 
+                             class="rounded-2xl shadow-2xl w-full max-w-md mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Mengapa Pilih LINTAS?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Platform terpercaya yang dirancang khusus untuk kebutuhan mahasiswa Indonesia
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 card-hover bg-gray-50 rounded-xl fade-in">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Aman & Terpercaya</h3>
+                    <p class="text-gray-600">Verifikasi mahasiswa dan sistem rating untuk transaksi yang aman</p>
+                </div>
+                
+                <div class="text-center p-6 card-hover bg-gray-50 rounded-xl fade-in">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-coins text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Hemat Biaya</h3>
+                    <p class="text-gray-600">Dapatkan alat praktikum dengan harga terjangkau dari sesama mahasiswa</p>
+                </div>
+                
+                <div class="text-center p-6 card-hover bg-gray-50 rounded-xl fade-in">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mudah Digunakan</h3>
+                    <p class="text-gray-600">Interface sederhana dan intuitif untuk pengalaman yang menyenangkan</p>
+                </div>
+                
+                <div class="text-center p-6 card-hover bg-gray-50 rounded-xl fade-in">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Komunitas Mahasiswa</h3>
+                    <p class="text-gray-600">Terhubung dengan mahasiswa se-Indonesia untuk saling membantu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Kategori Populer
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Temukan berbagai alat dan perlengkapan kuliah yang kamu butuhkan
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-microscope text-3xl text-purple-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold">Alat Laboratorium</h3>
+                            <p class="text-gray-600">500+ barang tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Mikroskop, pipet, gelas ukur, dan peralatan lab lainnya</p>
+                    <button class="text-purple-600 font-semibold hover:text-purple-700 transition">
+                        Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-calculator text-3xl text-green-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold">Kalkulator Teknik</h3>
+                            <p class="text-gray-600">200+ barang tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Kalkulator scientific, graphing calculator, dan alat hitung lainnya</p>
+                    <button class="text-green-600 font-semibold hover:text-green-700 transition">
+                        Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-book text-3xl text-blue-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold">Buku & Modul</h3>
+                            <p class="text-gray-600">1000+ barang tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Textbook, modul praktikum, dan buku referensi kuliah</p>
+                    <button class="text-blue-600 font-semibold hover:text-blue-700 transition">
+                        Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-laptop text-3xl text-indigo-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold">Perangkat Elektronik</h3>
+                            <p class="text-gray-600">300+ barang tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Laptop, tablet, multimeter, dan perangkat elektronik lainnya</p>
+                    <button class="text-indigo-600 font-semibold hover:text-indigo-700 transition">
+                        Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tools text-3xl text-orange-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold">Alat Teknik</h3>
+                            <p class="text-gray-600">150+ barang tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Jangka sorong, mistar, theodolite, dan alat ukur teknik</p>
+                    <button class="text-orange-600 font-semibold hover:text-orange-700 transition">
+                        Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-flask text-3xl text-red-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold">Alat Kimia</h3>
+                            <p class="text-gray-600">250+ barang tersedia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">Tabung reaksi, erlenmeyer, bunsen burner, dan alat kimia lainnya</p>
+                    <button class="text-red-600 font-semibold hover:text-red-700 transition">
+                        Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Apa Kata Mereka?
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Testimoni dari mahasiswa yang sudah merasakan manfaat LINTAS
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "Sangat membantu untuk mendapatkan alat praktikum yang mahal. Dengan sewa disini, saya bisa hemat untuk kebutuhan kuliah lainnya."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                             alt="Testimoni" 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold">Ahmad Rizki</p>
+                            <p class="text-sm text-gray-500">Mahasiswa Teknik ITB</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "Platform yang aman dan terpercaya. Saya sudah beberapa kali transaksi disini dan selalu lancar. Recommended banget!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b188?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                             alt="Testimoni" 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold">Sari Indah</p>
+                            <p class="text-sm text-gray-500">Mahasiswa Kedokteran UNPAD</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl card-hover fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400 mb-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "Mudah banget nyewa alat lab disini. Proses cepat dan barangnya selalu dalam kondisi baik. Terima kasih LINTAS!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                             alt="Testimoni" 
+                             class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold">Budi Santoso</p>
+                            <p class="text-sm text-gray-500">Mahasiswa Kimia UGM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Cara Kerja LINTAS
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Hanya 4 langkah mudah untuk mulai jual beli & sewa alat kuliah
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl font-bold step-number">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Daftar Akun</h3>
+                    <p class="text-gray-600">Buat akun dengan email kampus untuk verifikasi status mahasiswa</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl font-bold step-number">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Cari Barang</h3>
+                    <p class="text-gray-600">Temukan alat kuliah yang kamu butuhkan dengan mudah</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl font-bold step-number">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Hubungi Penjual</h3>
+                    <p class="text-gray-600">Chat langsung dengan penjual untuk negosiasi harga dan detail</p>
+                </div>
+                
+                <div class="text-center fade-in">
+                    <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <span class="text-3xl font-bold step-number">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Transaksi Aman</h3>
+                    <p class="text-gray-600">Lakukan transaksi dengan aman melalui sistem yang terpercaya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Siap Memulai Perjalananmu?
+                </h2>
+                <p class="text-xl text-gray-200 mb-8">
+                    Bergabunglah dengan ribuan mahasiswa yang sudah merasakan kemudahan LINTAS
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-yellow-400 text-purple-800 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-300 transition text-lg">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        Daftar Gratis Sekarang
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition text-lg">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Pelajari Lebih Lanjut
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-graduation-cap text-2xl text-purple-400 mr-2"></i>
+                        <span class="text-xl font-bold">LINTAS</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Platform jual beli & sewa alat kuliah terpercaya untuk mahasiswa Indonesia
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Platform</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Cara Kerja</a></li>
+                        <li><a href="#" class="hover:text-white transition">Keamanan</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Dukungan</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Bantuan</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 LINTAS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden bg-white shadow-lg absolute top-16 left-0 right-0 z-40 hidden';
+        mobileMenu.innerHTML = `
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-gray-700 hover:text-purple-600 transition">Beranda</a>
+                <a href="#features" class="block text-gray-700 hover:text-purple-600 transition">Fitur</a>
+                <a href="#categories" class="block text-gray-700 hover:text-purple-600 transition">Kategori</a>
+                <a href="#testimonials" class="block text-gray-700 hover:text-purple-600 transition">Testimoni</a>
+                <button class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                    Masuk
+                </button>
+            </div>
+        `;
+        
+        document.querySelector('nav').appendChild(mobileMenu);
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Counter animation for statistics (if needed)
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // Add some interactive effects
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-xl');
+            } else {
+                navbar.classList.remove('shadow-xl');
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Barang - StudyGear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .drag-area {
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .drag-area.active {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-xl font-bold text-blue-600">StudyGear</h1>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-gray-600">Upload Barang</span>
+                </div>
+                <button class="text-gray-600 hover:text-gray-800">
+                    <span class="text-2xl">×</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Upload Barang Baru</h2>
+                
+                <form class="space-y-6">
+                    <!-- Upload Foto -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Foto Barang <span class="text-red-500">*</span>
+                        </label>
+                        <div class="drag-area rounded-lg p-8 text-center cursor-pointer" id="dragArea">
+                            <div class="space-y-3">
+                                <div class="text-4xl text-gray-400">📷</div>
+                                <p class="text-gray-600">Drag & drop foto atau <span class="text-blue-600 font-medium">klik untuk upload</span></p>
+                                <p class="text-sm text-gray-500">PNG, JPG hingga 10MB (max 5 foto)</p>
+                            </div>
+                            <input type="file" class="hidden" id="fileInput" multiple accept="image/*">
+                        </div>
+                        <div id="imagePreview" class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+
+                    <!-- Nama Barang -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Nama Barang <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                               placeholder="Contoh: Mikroskop Olympus CX23">
+                    </div>
+
+                    <!-- Kategori -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Kategori <span class="text-red-500">*</span>
+                        </label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Pilih Kategori</option>
+                            <option value="mikroskop">Mikroskop</option>
+                            <option value="kimia">Alat Kimia</option>
+                            <option value="fisika">Alat Fisika</option>
+                            <option value="biologi">Alat Biologi</option>
+                            <option value="elektronik">Elektronik</option>
+                            <option value="komputer">Komputer & Software</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <!-- Tipe Transaksi -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">
+                            Tipe Transaksi <span class="text-red-500">*</span>
+                        </label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="tipe" value="jual" class="mr-3">
+                                <div>
+                                    <div class="font-medium text-gray-900">Jual</div>
+                                    <div class="text-sm text-gray-500">Jual permanen</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="tipe" value="sewa" class="mr-3">
+                                <div>
+                                    <div class="font-medium text-gray-900">Sewa</div>
+                                    <div class="text-sm text-gray-500">Sewa per hari/minggu</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Harga -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Harga <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2 text-gray-500">Rp</span>
+                                <input type="number" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                       placeholder="0">
+                            </div>
+                        </div>
+                        <div id="sewaUnit" class="hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Per
+                            </label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="hari">Hari</option>
+                                <option value="minggu">Minggu</option>
+                                <option value="bulan">Bulan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Kondisi -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Kondisi <span class="text-red-500">*</span>
+                        </label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="kondisi" value="baru" class="mr-2">
+                                <span class="text-sm font-medium">Baru</span>
+                            </label>
+                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="kondisi" value="bekas" class="mr-2">
+                                <span class="text-sm font-medium">Bekas</span>
+                            </label>
+                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="kondisi" value="rusak" class="mr-2">
+                                <span class="text-sm font-medium">Rusak</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Deskripsi -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Deskripsi Detail <span class="text-red-500">*</span>
+                        </label>
+                        <textarea rows="5" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                  placeholder="Jelaskan kondisi, spesifikasi, dan detail lainnya tentang barang..."></textarea>
+                        <p class="text-sm text-gray-500 mt-1">Minimum 20 karakter</p>
+                    </div>
+
+                    <!-- Lokasi -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Lokasi <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                               placeholder="Contoh: Universitas Indonesia, Depok">
+                    </div>
+
+                    <!-- Kontak -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Kontak WhatsApp <span class="text-red-500">*</span>
+                        </label>
+                        <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                               placeholder="08123456789">
+                    </div>
+
+                    <!-- Tombol Submit -->
+                    <div class="flex space-x-4 pt-6">
+                        <button type="button" class="flex-1 px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                            Simpan Draft
+                        </button>
+                        <button type="submit" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                            Upload Barang
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Drag & Drop functionality
+        const dragArea = document.getElementById('dragArea');
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const sewaUnit = document.getElementById('sewaUnit');
+
+        dragArea.addEventListener('click', () => fileInput.click());
+        
+        dragArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragArea.classList.add('active');
+        });
+
+        dragArea.addEventListener('dragleave', () => {
+            dragArea.classList.remove('active');
+        });
+
+        dragArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragArea.classList.remove('active');
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            imagePreview.innerHTML = '';
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const div = document.createElement('div');
+                        div.className = 'relative';
+                        div.innerHTML = `
+                            <img src="${e.target.result}" class="w-full h-24 object-cover rounded-md border">
+                            <button class="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 text-xs">×</button>
+                        `;
+                        imagePreview.appendChild(div);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Show/hide sewa unit
+        document.querySelectorAll('input[name="tipe"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'sewa') {
+                    sewaUnit.classList.remove('hidden');
+                } else {
+                    sewaUnit.classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Barang berhasil diupload! (Demo)');
+        });
+    </script>
+</body>
+</html>

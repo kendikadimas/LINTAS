@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StudyGear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        .sidebar-active { background: #eff6ff; border-right: 3px solid #3b82f6; }
+        .tab-active { background: #3b82f6; color: white; }
+        .tab-inactive { background: #f1f5f9; color: #64748b; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg">
+            <div class="p-6 border-b">
+                <h1 class="text-xl font-bold text-blue-600">StudyGear Admin</h1>
+            </div>
+            <nav class="mt-6">
+                <div class="space-y-2 px-4">
+                    <a href="#" class="sidebar-active flex items-center space-x-3 py-2 px-3 rounded-lg text-blue-600" onclick="showTab('dashboard')">
+                        <span>📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100" onclick="showTab('verifikasi')">
+                        <span>✅</span>
+                        <span>Verifikasi</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100" onclick="showTab('pengguna')">
+                        <span>👥</span>
+                        <span>Pengguna</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100" onclick="showTab('barang')">
+                        <span>📦</span>
+                        <span>Barang</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100" onclick="showTab('laporan')">
+                        <span>📈</span>
+                        <span>Laporan</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100" onclick="showTab('konten')">
+                        <span>⚙️</span>
+                        <span>Manajemen</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="absolute bottom-0 w-64 p-4 border-t">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm">A</span>
+                    </div>
+                    <div>
+                        <div class="text-sm font-medium">Admin</div>
+                        <div class="text-xs text-gray-500">admin@studygear.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-hidden">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content h-full overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Dashboard</h2>
+                        <div class="text-sm text-gray-500">Terakhir diperbarui: Hari ini, 14:30</div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-500">Total Pengguna</p>
+                                    <p class="text-2xl font-bold text-gray-900">1,247</p>
+                                </div>
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <span class="text-blue-600 text-xl">👥</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-green-600">+12% dari bulan lalu</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-500">Total Barang</p>
+                                    <p class="text-2xl font-bold text-gray-900">3,456</p>
+                                </div>
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <span class="text-green-600 text-xl">📦</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-green-600">+8% dari bulan lalu</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-500">Transaksi Bulan Ini</p>
+                                    <p class="text-2xl font-bold text-gray-900">892</p>
+                                </div>
+                                <div class="bg-purple-100 p-3 rounded-full">
+                                    <span class="text-purple-600 text-xl">💳</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-green-600">+25% dari bulan lalu</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-500">Pendapatan</p>
+                                    <p class="text-2xl font-bold text-gray-900">Rp 45.2M</p>
+                                </div>
+                                <div class="bg-yellow-100 p-3 rounded-full">
+                                    <span class="text-yellow-600 text-xl">💰</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-green-600">+18% dari bulan lalu</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-lg font-semibold mb-4">Transaksi Bulanan</h3>
+                            <canvas id="transactionChart" height="200"></canvas>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-lg font-semibold mb-4">Kategori Populer</h3>
+                            <canvas id="categoryChart" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Pending Items -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="p-6 border-b">
+                            <h3 class="text-lg font-semibold">Memerlukan Perhatian</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <div class="text-red-800 font-medium">Barang Menunggu Verifikasi</div>
+                                    <div class="text-red-600 text-2xl font-bold">12</div>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg">
+                                    <div class="text-yellow-800 font-medium">Pengguna Menunggu Verifikasi</div>
+                                    <div class="text-yellow-600 text-2xl font-bold">8</div>
+                                </div>
+                                <div class="bg-orange-50 p-4 rounded-lg">
+                                    <div class="text-orange-800 font-medium">Laporan Pengguna</div>
+                                    <div class="text-orange-600 text-2xl font-bold">3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verifikasi Tab -->
+            <div id="verifikasi" class="tab-content h-full overflow-y-auto hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Verifikasi</h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Verifikasi Barang -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b">
+                                <h3 class="text-lg font-semibold">Barang Menunggu Verifikasi</h3>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <div class="flex items-center space-x-4 p-4 border rounded-lg">
+                                    <img src="https://via.placeholder.com/60x60" alt="Barang" class="w-15 h-15 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium">Mikroskop Olympus CX23</h4>
+                                        <p class="text-sm text-gray-500">Oleh: Ahmad Fauzi</p>
+                                        <p class="text-sm text-gray-500">Kategori: Mikroskop</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="px-3 py-1 bg-green-600 text-white rounded text-sm">Terima</button>
+                                        <button class="px-3 py-1 bg-red-600 text-white rounded text-sm">Tolak</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-4 border rounded-lg">
+                                    <img src="https://via.placeholder.com/60x60" alt="Barang" class="w-15 h-15 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium">Oscilloscope Digital</h4>
+                                        <p class="text-sm text-gray-500">Oleh: Siti Nurhaliza</p>
+                                        <p class="text-sm text-gray-500">Kategori: Elektronik</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="px-3 py-1 bg-green-600 text-white rounded text-sm">Terima</button>
+                                        <button class="px-3 py-1 bg-red-600 text-white rounded text-sm">Tolak</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Verifikasi Pengguna -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b">
+                                <h3 class="text-lg font-semibold">Pengguna Menunggu Verifikasi</h3>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <div class="flex items-center space-x-4 p-4 border rounded-lg">
+                                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                                        <span class="text-gray-600">MR</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-medium">Muhammad Rizky</h4>
+                                        <p class="text-sm text-gray-500">rizky@ui.ac.id</p>
+                                        <p class="text-sm text-gray-500">Universitas Indonesia</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="px-3 py-1 bg-green-600 text-white rounded text-sm">Terima</button>
+                                        <button class="px-3 py-1 bg-red-600 text-white rounded text-sm">Tolak</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-4 border rounded-lg">
+                                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                                        <span class="text-gray-600">AP</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-medium">Anggun Pratiwi</h4>
+                                        <p class="text-sm text-gray-500">anggun@itb.ac.id</p>
+                                        <p class="text-sm text-gray-500">Institut Teknologi Bandung</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="px-3 py-1 bg-green-600 text-white rounded text-sm">Terima</button>
+                                        <button class="px-3 py-1 bg-red-600 text-white rounded text-sm">Tolak</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pengguna Tab -->
+            <div id="pengguna" class="tab-content h-full overflow-y-auto hidden">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Manajemen Pengguna</h2>
+                        <div class="flex space-x-2">
+                            <input type="text" placeholder="Cari pengguna..." class="px-4 py-2 border rounded-lg">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Cari</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Pengguna</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Universitas</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bergabung</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                                                <span class="text-gray-600">AF</span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Ahmad Fauzi</div>
+                                                <div class="text-sm text-gray-500">ahmad@ui.ac.id</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Universitas Indonesia</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 Mar 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                        <button class="text-red-600 hover:text-red-900">Suspend</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                                                <span class="text-gray-600">SN</span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Siti Nurhaliza</div>
+                                                <div class="text-sm text-gray-500">siti@itb.ac.id</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Institut Teknologi Bandung</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8 Apr 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                        <button class="text-red-600 hover:text-red-900">Suspend</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barang Tab -->
+            <div id="barang" class="tab-content h-full overflow-y-auto hidden">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Manajemen Barang</h2>
+                        <div class="flex space-x-2">
+                            <select class="px-4 py-2 border rounded-lg">
+                                <option>Semua Kategori</option>
+                                <option>Mikroskop</option>
+                                <option>Kimia</option>
+                                <option>Fisika</option>
+                            </select>
+                            <input type="text" placeholder="Cari barang..." class="px-4 py-2 border rounded-lg">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Cari</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Barang</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Penjual</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Kategori</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Harga</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img src="https://via.placeholder.com/40x40" alt="Barang" class="w-10 h-10 object-cover rounded">
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Mikroskop Olympus CX23</div>
+                                                <div class="text-sm text-gray-500">Kondisi: Bekas</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Ahmad Fauzi</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Mikroskop</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Rp 2.500.000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                        <button class="text-red-600 hover:text-red-900">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laporan Tab -->
+            <div id="laporan" class="tab-content h-full overflow-y-auto hidden">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Laporan & Analitik</h2>
+                        <div class="flex space-x-2">
+                            <select class="px-4 py-2 border rounded-lg">
+                                <option>Bulan Ini</option>
+                                <option>3 Bulan Terakhir</option>
+                                <option>6 Bulan Terakhir</option>
+                                <option>1 Tahun Terakhir</option>
+                            </select>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Export PDF</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-lg font-semibold mb-4">Transaksi Harian</h3>
+                            <canvas id="dailyChart" height="200"></canvas>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow">
+                            <h3 class="text-lg font-semibold mb-4">Pendapatan per Kategori</h3>
+                            <canvas id="revenueChart" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-white rounded-lg shadow">
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold mb-4">Universitas Teratas</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                    <span>Universitas Indonesia</span>
+                                    <span class="font-medium">234 pengguna</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                    <span>Institut Teknologi Bandung</span>
+                                    <span class="font-medium">187 pengguna</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                    <span>Universitas Gadjah Mada</span>
+                                    <span class="font-medium">156 pengguna</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manajemen Konten Tab -->
+            <div id="konten" class="tab-content h-full overflow-y-auto hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Manajemen Konten</h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Kategori -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-lg font-semibold">Kategori</h3>
+                                    <button class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Tambah</button>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 border rounded">
+                                        <span>Mikroskop</span>
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 text-sm">Edit</button>
+                                            <button class="text-red-600 text-sm">Hapus</button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 border rounded">
+                                        <span>Alat Kimia</span>
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 text-sm">Edit</button>
+                                            <button class="text-red-600 text-sm">Hapus</button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 border rounded">
+                                        <span>Alat Fisika</span>
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 text-sm">Edit</button>
+                                            <button class="text-red-600 text-sm">Hapus</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Aturan -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-lg font-semibold">Aturan & Kebijakan</h3>
+                                    <button class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Edit</button>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Syarat & Ketentuan</label>
+                                        <textarea class="w-full p-3 border rounded-lg" rows="3">Syarat dan ketentuan penggunaan platform StudyGear...</textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Kebijakan Privasi</label>
+                                        <textarea class="w-full p-3 border rounded-lg" rows="3">Kebijakan privasi terkait penggunaan data pengguna...</textarea>
+                                    </div>
+                                    <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg">Simpan Perubahan</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Banner -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-lg font-semibold">Banner & Promosi</h3>
+                                    <button class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Tambah Banner</button>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="space-y-4">
+                                    <div class="border rounded-lg p-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <h4 class="font-medium">Promo Akhir Tahun</h4>
+                                                <p class="text-sm text-gray-500">Diskon 20% untuk semua kategori</p>
+                                                <p class="text-xs text-gray-400">Berlaku: 1 Des - 31 Des 2024</p>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button class="px-3 py-1 bg-green-600 text-white rounded text-sm">Aktif</button>
+                                                <button class="px-3 py-1 bg-gray-600 text-white rounded text-sm">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border rounded-lg p-4">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <h4 class="font-medium">Welcome Banner</h4>
+                                                <p class="text-sm text-gray-500">Selamat datang di StudyGear</p>
+                                                <p class="text-xs text-gray-400">Berlaku: Permanen</p>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button class="px-3 py-1 bg-green-600 text-white rounded text-sm">Aktif</button>
+                                                <button class="px-3 py-1 bg-gray-600 text-white rounded text-sm">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pengaturan Sistem -->
+                        <div class="bg-white rounded-lg shadow">
+                            <div class="p-6 border-b">
+                                <h3 class="text-lg font-semibold">Pengaturan Sistem</h3>
+                            </div>
+                            <div class="p-6">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="font-medium">Verifikasi Otomatis</label>
+                                            <p class="text-sm text-gray-500">Aktifkan verifikasi barang otomatis</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <label class="font-medium">Maintenance Mode</label>
+                                            <p class="text-sm text-gray-500">Aktifkan mode maintenance</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Komisi Platform (%)</label>
+                                        <input type="number" class="w-full p-2 border rounded-lg" value="5" min="0" max="100">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Batas Upload per Pengguna</label>
+                                        <input type="number" class="w-full p-2 border rounded-lg" value="10" min="1" max="100">
+                                    </div>
+                                    <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg">Simpan Pengaturan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Update sidebar active state
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('sidebar-active', 'text-blue-600');
+                link.classList.add('text-gray-600');
+            });
+            
+            // Set active sidebar item
+            event.target.classList.add('sidebar-active', 'text-blue-600');
+            event.target.classList.remove('text-gray-600');
+        }
+
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Transaction Chart
+            const transactionCtx = document.getElementById('transactionChart').getContext('2d');
+            new Chart(transactionCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'Transaksi',
+                        data: [65, 78, 90, 81, 95, 102, 118],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Category Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Mikroskop', 'Kimia', 'Fisika', 'Biologi', 'Elektronik'],
+                    datasets: [{
+                        data: [30, 25, 20, 15, 10],
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Daily Chart
+            const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+            new Chart(dailyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                    datasets: [{
+                        label: 'Transaksi Harian',
+                        data: [12, 19, 15, 25, 22, 8, 5],
+                        backgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Revenue Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Mikroskop', 'Kimia', 'Fisika', 'Biologi', 'Elektronik'],
+                    datasets: [{
+                        data: [15.2, 8.5, 6.3, 4.8, 3.2],
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': Rp ' + context.parsed + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Action buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.textContent === 'Terima') {
+                alert('Item telah disetujui');
+            } else if (e.target.textContent === 'Tolak') {
+                alert('Item telah ditolak');
+            }
+        });
+    </script>
+</body>
+</html>
